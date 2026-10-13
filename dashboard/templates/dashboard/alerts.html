@@ -1,0 +1,12 @@
+{% extends 'dashboard/base.html' %}
+{% block content %}
+<div class="app-header"><h1>التنبيهات</h1></div>
+<div class="app-content">
+    {% for i in "123" %}
+    <div class="card" style="border-right: 4px solid #ef4444;">
+        <h4 style="color: #ef4444; font-size: 13px;">تم رصد شخص بالقرب من المعدة</h4>
+        <p style="font-size: 11px; color: #64748b;">قبل 10 دقائق - المسافة 2.1 متر</p>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

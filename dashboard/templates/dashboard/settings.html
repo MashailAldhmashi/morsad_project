@@ -1,0 +1,49 @@
+<!-- {% extends 'dashboard/base.html' %}
+{% block content %}
+<div class="app-header"><h1>الإعدادات</h1></div>
+<div class="app-content">
+    <div class="card"><a href="{% url 'devices' %}" style="text-decoration: none; color: inherit;"><i class="fa-solid fa-microchip"></i> إدارة الأجهزة</a></div>
+    <div class="card"><a href="{% url 'alerts' %}" style="text-decoration: none; color: inherit;"><i class="fa-regular fa-bell"></i> إعدادات التنبيهات</a></div>
+    <div class="card"><a href="{% url 'report' %}" style="text-decoration: none; color: inherit;"><i class="fa-regular fa-file-lines"></i> التقارير الشهرية</a></div>
+    <div class="card" style="color: #ef4444;"><a href="{% url 'login' %}" style="text-decoration: none; color: inherit;"><i class="fa-solid fa-right-from-bracket"></i> تسجيل الخروج</a></div>
+</div>
+{% endblock %} -->
+
+{% extends 'dashboard/base.html' %}
+{% block content %}
+<div class="app-header">
+    <h1>الإعدادات</h1>
+</div>
+<div class="app-content">
+    <div class="card" style="padding: 0; overflow: hidden;">
+        <div style="padding: 14px 16px; border-bottom: 1px solid #f1f5f9; display: flex; justify-content: space-between; align-items: center;">
+            <span style="font-size: 13px; color: #111b27;"><i class="fa-regular fa-user" style="margin-left: 10px; color: #64748b;"></i> الملف الشخصي</span>
+            <i class="fa-solid fa-chevron-left" style="color: #cbd5e1; font-size: 11px;"></i>
+        </div>
+        <div style="padding: 14px 16px; border-bottom: 1px solid #f1f5f9; display: flex; justify-content: space-between; align-items: center;">
+            <span style="font-size: 13px; color: #111b27;"><i class="fa-regular fa-bell" style="margin-left: 10px; color: #64748b;"></i> إعدادات التنبيهات</span>
+            <i class="fa-solid fa-chevron-left" style="color: #cbd5e1; font-size: 11px;"></i>
+        </div>
+        <div style="padding: 14px 16px; border-bottom: 1px solid #f1f5f9; display: flex; justify-content: space-between; align-items: center;">
+            <a href="{% url 'devices' %}" style="text-decoration: none; color: #111b27; width: 100%; display: flex; justify-content: space-between; align-items: center;">
+                <span style="font-size: 13px;"><i class="fa-solid fa-microchip" style="margin-left: 10px; color: #64748b;"></i> إدارة الأجهزة</span>
+                <i class="fa-solid fa-chevron-left" style="color: #cbd5e1; font-size: 11px;"></i>
+            </a>
+        </div>
+        <div style="padding: 14px 16px; border-bottom: 1px solid #f1f5f9; display: flex; justify-content: space-between; align-items: center;">
+            <span style="font-size: 13px; color: #111b27;"><i class="fa-solid fa-globe" style="margin-left: 10px; color: #64748b;"></i> اللغة (العربية)</span>
+            <span style="font-size: 12px; color: #64748b;">العربية</span>
+        </div>
+        <div style="padding: 14px 16px; display: flex; justify-content: space-between; align-items: center;">
+            <span style="font-size: 13px; color: #111b27;"><i class="fa-regular fa-moon" style="margin-left: 10px; color: #64748b;"></i> المظهر</span>
+            <span style="font-size: 12px; color: #64748b;">فاتح</span>
+        </div>
+    </div>
+
+    <div class="card" style="margin-top: 15px; text-align: center;">
+        <a href="{% url 'login' %}" style="text-decoration: none; color: #ef4444; font-size: 13px; font-weight: bold; display: block; padding: 5px;">
+            <i class="fa-solid fa-right-from-bracket"></i> تسجيل الخروج
+        </a>
+    </div>
+</div>
+{% endblock %}

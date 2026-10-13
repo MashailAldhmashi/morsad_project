@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مرصاد - الرئيسية</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #f6f5fa;
+            color: #1e293b;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .app-container {
+            width: 100%;
+            max-width: 410px;
+            height: 840px;
+            background-color: #fbfbfe;
+            border-radius: 40px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            border: 8px solid #111b27;
+            position: relative;
+        }
+
+        .app-header {
+            padding: 20px 20px 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .app-title {
+            text-align: center;
+            flex-grow: 1;
+        }
+
+        .app-title h1 {
+            font-size: 24px;
+            font-weight: bold;
+            color: #111b27;
+        }
+
+        .app-title span {
+            font-size: 13px;
+            color: #64748b;
+        }
+
+        .icon-btn {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            width: 38px;
+            height: 38px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #111b27;
+            font-size: 16px;
+        }
+
+        .app-content {
+            flex: 1;
+            overflow-y: auto;
+            padding: 15px 20px;
+            padding-bottom: 90px;
+        }
+
+        .app-content::-webkit-scrollbar {
+            display: none;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .stat-card {
+            background: #ffffff;
+            border-radius: 18px;
+            padding: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+            border: 1px solid #f1f5f9;
+        }
+
+        .stat-info p {
+            font-size: 11px;
+            color: #64748b;
+            margin-top: 4px;
+        }
+
+        .stat-info h2 {
+            font-size: 22px;
+            color: #111b27;
+        }
+
+        .stat-icon {
+            width: 38px;
+            height: 38px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+        }
+
+        .red-bg { background-color: #fef2f2; color: #ef4444; }
+        .green-bg { background-color: #f0fdf4; color: #22c55e; }
+        .blue-bg { background-color: #f0f9ff; color: #0ea5e9; }
+        .orange-bg { background-color: #fff7ed; color: #f97316; }
+
+        .section-card {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 16px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+            border: 1px solid #f1f5f9;
+        }
+
+        .section-title {
+            font-size: 15px;
+            font-weight: bold;
+            color: #111b27;
+            margin-bottom: 12px;
+        }
+
+        .event-card {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            background: #ffffff;
+            border-radius: 18px;
+            padding: 12px;
+            border: 1px solid #f1f5f9;
+        }
+
+        .event-img {
+            width: 80px;
+            height: 80px;
+            border-radius: 12px;
+            object-fit: cover;
+            background-color: #cbd5e1;
+        }
+
+        .event-details h4 {
+            font-size: 14px;
+            color: #ef4444;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin-bottom: 6px;
+        }
+
+        .event-details p {
+            font-size: 12px;
+            color: #64748b;
+            margin-bottom: 3px;
+        }
+
+        .bottom-nav {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 70px;
+            background: #ffffff;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            border-top: 1px solid #f1f5f9;
+        }
+
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            color: #94a3b8;
+            font-size: 11px;
+            text-decoration: none;
+        }
+
+        .nav-item i {
+            font-size: 18px;
+        }
+
+        .nav-item.active {
+            color: #111b27;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="app-container">
+        <div class="app-header">
+            <div class="icon-btn"><i class="fa-regular fa-bell"></i></div>
+            <div class="app-title">
+                <h1>مرصاد</h1>
+                <span>أكتوبر 2026 <i class="fa-regular fa-calendar"></i></span>
+            </div>
+            <div class="icon-btn"><i class="fa-solid fa-chevron-down"></i></div>
+        </div>
+
+        <div class="app-content">
+            
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-info">
+                        <h2>{{ total_alerts }}</h2>
+                        <p>عدد الإنذارات</p>
+                    </div>
+                    <div class="stat-icon red-bg"><i class="fa-solid fa-triangle-exclamation"></i></div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-info">
+                        <h2>{{ detected_persons }}</h2>
+                        <p>الأشخاص المرصودين</p>
+                    </div>
+                    <div class="stat-icon green-bg"><i class="fa-solid fa-user-check"></i></div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-info">
+                        <h2>23</h2>
+                        <p>الصور المسجلة</p>
+                    </div>
+                    <div class="stat-icon blue-bg"><i class="fa-regular fa-image"></i></div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-info">
+                        <h2>{{ active_days }}</h2>
+                        <p>الأيام النشطة</p>
+                    </div>
+                    <div class="stat-icon orange-bg"><i class="fa-regular fa-calendar-check"></i></div>
+                </div>
+            </div>
+
+            <div class="section-card">
+                <div class="section-title">الإنذارات خلال هذا الشهر</div>
+                <canvas id="alertsChart" height="130"></canvas>
+            </div>
+
+            <div class="section-title">آخر حدث</div>
+            <div class="event-card">
+                <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=300" alt="حدث" class="event-img">
+                <div class="event-details">
+                    <h4><i class="fa-solid fa-triangle-exclamation"></i> تم رصد شخص</h4>
+                    <p><i class="fa-regular fa-clock"></i> اليوم 10:42 ص</p>
+                    <p><i class="fa-solid fa-ruler-horizontal"></i> المسافة: 2.8 متر</p>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="bottom-nav">
+            <a href="#" class="nav-item active">
+                <i class="fa-solid fa-house"></i>
+                <span>الرئيسية</span>
+            </a>
+            <a href="#" class="nav-item">
+                <i class="fa-solid fa-chart-column"></i>
+                <span>الإحصائيات</span>
+            </a>
+            <a href="#" class="nav-item">
+                <i class="fa-regular fa-clipboard"></i>
+                <span>الأحداث</span>
+            </a>
+            <a href="#" class="nav-item">
+                <i class="fa-solid fa-gear"></i>
+                <span>الإعدادات</span>
+            </a>
+        </div>
+    </div>
+
+    <script>
+        const ctx = document.getElementById('alertsChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['1', '5', '10', '15', '20', '25', '30'],
+                datasets: [{
+                    data: [3, 5, 2, 8, 6, 4, 7],
+                    backgroundColor: '#ef4444',
+                    borderRadius: 6,
+                    barThickness: 12
+                }]
+            },
+            options: {
+                plugins: { legend: { display: false } },
+                scales: {
+                    x: { grid: { display: false } },
+                    y: { grid: { display: false }, ticks: { stepSize: 2 } }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

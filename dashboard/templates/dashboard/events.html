@@ -1,0 +1,46 @@
+<!-- {% extends 'dashboard/base.html' %}
+{% block content %}
+<div class="app-header"><h1>سجل الأحداث</h1></div>
+<div class="app-content">
+    {% for i in "1234" %}
+    <a href="{% url 'event_detail' %}" style="text-decoration: none; color: inherit;">
+        <div class="card" style="display: flex; gap: 10px; align-items: center;">
+            <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=100" style="width: 60px; height: 60px; border-radius: 10px;">
+            <div>
+                <h4 style="color: #ef4444; font-size: 13px;"><i class="fa-solid fa-triangle-exclamation"></i> تم رصد شخص</h4>
+                <p style="font-size: 11px; color: #64748b;">26 أكتوبر 2026 - 10:42 ص</p>
+                <p style="font-size: 11px; color: #64748b;">المسافة: 2.8 متر</p>
+            </div>
+        </div>
+    </a>
+    {% endfor %}
+</div>
+{% endblock %} -->
+
+{% extends 'dashboard/base.html' %}
+{% block content %}
+<div class="app-header">
+    <h1>سجل الأحداث</h1>
+</div>
+<div class="app-content">
+    <div style="display: flex; gap: 8px; margin-bottom: 15px;">
+        <button style="flex: 1; padding: 8px; border-radius: 20px; border: none; background: #111b27; color: white; font-size: 12px;">هذا الشهر</button>
+        <button style="flex: 1; padding: 8px; border-radius: 20px; border: 1px solid #ddd; background: white; color: #64748b; font-size: 12px;">الأسبوع</button>
+        <button style="flex: 1; padding: 8px; border-radius: 20px; border: 1px solid #ddd; background: white; color: #64748b; font-size: 12px;">اليوم</button>
+    </div>
+
+    {% for i in "12345" %}
+    <a href="{% url 'event_detail' %}" style="text-decoration: none; color: inherit;">
+        <div class="card" style="display: flex; gap: 12px; align-items: center; margin-bottom: 10px;">
+            <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=120" style="width: 65px; height: 65px; border-radius: 12px; object-fit: cover;">
+            <div style="flex-grow: 1;">
+                <h4 style="color: #ef4444; font-size: 13px; margin-bottom: 4px;"><i class="fa-solid fa-triangle-exclamation"></i> تم رصد شخص</h4>
+                <p style="font-size: 11px; color: #64748b; margin-bottom: 2px;"><i class="fa-regular fa-clock"></i> 26 أكتوبر 2026 - 10:42 ص</p>
+                <p style="font-size: 11px; color: #64748b;"><i class="fa-solid fa-ruler-horizontal"></i> المسافة: 2.8 متر</p>
+            </div>
+            <i class="fa-solid fa-chevron-left" style="color: #cbd5e1; font-size: 12px;"></i>
+        </div>
+    </a>
+    {% endfor %}
+</div>
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends 'dashboard/base.html' %}
+{% block content %}
+<div class="app-header">
+    <a href="{% url 'events' %}" style="color: #111b27;"><i class="fa-solid fa-chevron-right"></i></a>
+    <h1>تفاصيل الحدث</h1>
+</div>
+<div class="app-content">
+    <div class="card" style="text-align: center;">
+        <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=400" style="width: 100%; border-radius: 12px;">
+        <h3 style="color: #ef4444; margin-top: 10px;"><i class="fa-solid fa-triangle-exclamation"></i> تم رصد شخص</h3>
+        <p style="color: #64748b; font-size: 12px;">26 أكتوبر 2026 - 10:42 ص</p>
+    </div>
+    <div class="card">
+        <p><strong>الوقت:</strong> 10:42 ص</p>
+        <p><strong>المسافة:</strong> 2.8 متر</p>
+        <p><strong>اسم الجهاز:</strong> مرصاد - 01</p>
+    </div>
+</div>
+{% endblock %}

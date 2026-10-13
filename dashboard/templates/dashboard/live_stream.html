@@ -1,0 +1,14 @@
+{% extends 'dashboard/base.html' %}
+{% block content %}
+<div class="app-header"><h1>البث المباشر</h1></div>
+<div class="app-content">
+    <div class="card" style="padding: 0; overflow: hidden; position: relative;">
+        <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=400" style="width: 100%; display: block;">
+        <span style="position: absolute; top: 10px; right: 10px; background: red; color: white; padding: 2px 8px; border-radius: 5px; font-size: 10px;">مباشر ●</span>
+    </div>
+    <div style="display: flex; gap: 10px; margin-top: 10px;">
+        <button class="btn-main" style="background: #3b82f6;"><i class="fa-solid fa-camera"></i> التقاط صورة</button>
+        <button class="btn-main"><i class="fa-solid fa-expand"></i> تكبير الشاشة</button>
+    </div>
+</div>
+{% endblock %}

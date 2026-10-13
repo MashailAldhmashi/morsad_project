@@ -1,0 +1,21 @@
+{% extends 'dashboard/base.html' %}
+{% block content %}
+<div class="app-header"><h1>الأجهزة</h1></div>
+<div class="app-content">
+    <div class="card" style="display: flex; justify-content: space-between; align-items: center;">
+        <div>
+            <h4>مرصاد - 01</h4>
+            <p style="font-size: 11px; color: #64748b;">موقع العمل الرئيسي</p>
+        </div>
+        <span style="color: #22c55e; font-size: 12px;">● متصل</span>
+    </div>
+    <div class="card" style="display: flex; justify-content: space-between; align-items: center;">
+        <div>
+            <h4>مرصاد - 02</h4>
+            <p style="font-size: 11px; color: #64748b;">موقع التخزين</p>
+        </div>
+        <span style="color: #ef4444; font-size: 12px;">● غير متصل</span>
+    </div>
+    <button class="btn-main" style="margin-top: 15px;">+ إضافـة جهاز</button>
+</div>
+{% endblock %}

@@ -1,0 +1,71 @@
+<!-- {% extends 'dashboard/base.html' %}
+{% block content %}
+<div class="app-header"><h1>الإحصائيات</h1></div>
+<div class="app-content">
+    <div class="card">
+        <h3>عدد الإنذارات: 23</h3>
+        <p style="color: #22c55e; font-size: 12px;">↑ 35% مقارنة بالشهر السابق</p>
+        <canvas id="statChart" height="150" style="margin-top: 10px;"></canvas>
+    </div>
+</div>
+<script>
+    new Chart(document.getElementById('statChart'), {
+        type: 'bar',
+        data: { labels: ['1', '5', '10', '15', '20', '25', '30'], datasets: [{ data: [3, 5, 2, 8, 6, 4, 7], backgroundColor: '#ef4444' }] },
+        options: { plugins: { legend: { display: false } } }
+    });
+</script>
+{% endblock %} -->
+
+{% extends 'dashboard/base.html' %}
+{% block content %}
+<div class="app-header">
+    <h1>الإحصائيات</h1>
+</div>
+<div class="app-content">
+    <div style="display: flex; gap: 8px; margin-bottom: 15px;">
+        <button style="flex: 1; padding: 8px; border-radius: 20px; border: none; background: #111b27; color: white; font-size: 12px; font-weight: bold;">شهري</button>
+        <button style="flex: 1; padding: 8px; border-radius: 20px; border: 1px solid #ddd; background: white; color: #64748b; font-size: 12px;">أسبوعي</button>
+        <button style="flex: 1; padding: 8px; border-radius: 20px; border: 1px solid #ddd; background: white; color: #64748b; font-size: 12px;">يومي</button>
+    </div>
+
+    <div class="card">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+            <span style="font-size: 13px; color: #64748b;">عدد الإنذارات</span>
+            <span style="font-size: 11px; color: #22c55e; font-weight: bold;">↑ 35% مقارنة بالشهر السابق</span>
+        </div>
+        <h2 style="font-size: 26px; color: #111b27; margin-bottom: 10px;">{{ total_alerts }}</h2>
+        <canvas id="mainStatsChart" height="140"></canvas>
+    </div>
+
+    <div class="card">
+        <span style="font-size: 13px; color: #64748b;">إجمالي الصور المسجلة</span>
+        <h2 style="font-size: 24px; color: #111b27; margin-top: 5px;">23 <span style="font-size: 12px; color: #22c55e;">↑ 21%</span></h2>
+    </div>
+
+    <div class="card">
+        <span style="font-size: 13px; color: #64748b;">الأيام النشطة</span>
+        <h2 style="font-size: 24px; color: #111b27; margin-top: 5px;">15 <span style="font-size: 12px; color: #64748b; font-weight: normal;">من أصل 31 يوم</span></h2>
+    </div>
+</div>
+
+<script>
+    const ctx = document.getElementById('mainStatsChart').getContext('2d');
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['1', '5', '10', '15', '20', '25', '30'],
+            datasets: [{
+                data: [3, 5, 2, 8, 6, 4, 7],
+                backgroundColor: '#ef4444',
+                borderRadius: 4,
+                barThickness: 10
+            }]
+        },
+        options: {
+            plugins: { legend: { display: false } },
+            scales: { x: { grid: { display: false } }, y: { grid: { display: false } } }
+        }
+    });
+</script>
+{% endblock %}
